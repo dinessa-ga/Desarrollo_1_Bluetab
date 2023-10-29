@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { db } from '../configuration/firebase';
 import { collection, addDoc } from 'firebase/firestore';
+import './Fileupload.css'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -17,7 +18,7 @@ const FileUpload = ({ updateFormData }) => {
       reader.onload = async (event) => {
         const arrayBuffer = event.target.result;
         setPdfData(arrayBuffer);
-        updateFormData({ name: file.name }); // Esto es opcional y lo utilizas para actualizar el nombre en el formulario
+        updateFormData({ name: file.name }); 
 
         saveToFirestore(arrayBuffer, file.name);
       };
@@ -76,7 +77,7 @@ const FileUpload = ({ updateFormData }) => {
   };
 
   return (
-    <div>
+    <div id='containerPdf'>
       <input
         type="file"
         accept=".pdf"

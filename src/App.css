@@ -1,32 +1,23 @@
-/* 
-.tittle{
-  color: aliceblue;
-  padding: 10px;
-}
-.Inicio{
-  color: black;
-  padding-left: 90%;
-  
+body{
+  display: block;
+  margin: 30%;
 }
 
-.boxHeader {
-  background-color: #000028;
-  height: 80px;
-  width: 100%;
-  display: flex;
+#img1{
+  background-image: url(./img/Bluetab.png);
+  background-repeat: no-repeat;
+  background-size: contain; 
+  width: 200px;
+  height: 100px;
+  margin-top: 20px;
+
 }
 
-.logoSiemens{
-  padding: 30px;
+#containerImg{
+  background-color: rgb(207, 207, 207);
+  margin-top: -20px;
 }
 
-.letreroInicio{
-  align-self: center;
-  color: aliceblue;
-  margin-left: 70%;
+#formCv {
+  margin-top: 20%;
 }
-.letreroIdioma{
-  align-self: center;
-  color: aliceblue;
-  margin-left: 10px;
-} */

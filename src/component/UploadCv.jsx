@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { BubbleChat } from 'flowise-embed-react';
 import { db } from '../configuration/firebase'; 
 import { getDocs, collection, doc, getDoc } from 'firebase/firestore';
-import './UploadCV.css'; // Asegúrate de que la ruta sea correcta
+import './UploadCV.css'; 
 
 export default function UploadCV() {
   const [pdfs, setPdfs] = useState([]);
   const [selectedPdf, setSelectedPdf] = useState(null);
-  const [formDetails, setFormDetails] = useState(null); // Para almacenar los detalles del formulario
-  const [formName, setFormName] = useState(''); // Para almacenar el nombre del formulario seleccionado
+  const [formDetails, setFormDetails] = useState(null); 
+  const [formName, setFormName] = useState(''); 
 
   const viewPdf = async (pdf) => {
     setSelectedPdf(pdf);
     setFormName(pdf.name);
 
-    // Cargar los detalles del formulario cuando se seleccione un PDF
-    const formDocRef = doc(db, 'Forms', pdf.name); // Suponiendo que el nombre del PDF coincide con el campo 'nombre' del formulario
+   
+    const formDocRef = doc(db, 'Forms', pdf.name); 
     const formDocSnapshot = await getDoc(formDocRef);
     
     if (formDocSnapshot.exists()) {
@@ -75,8 +75,8 @@ export default function UploadCV() {
           {formDetails && (
             <div>
               <h2>Detalles del Formulario:</h2>
-              <p>Nombre: {formName}</p> {/* Muestra el nombre del formulario seleccionado */}
-              <p>Experiencia Laboral: {formDetails.experienciaLaboral}</p> {/* Agrega más campos del formulario aquí si es necesario */}
+              <p>Nombre: {formName}</p> 
+              <p>Experiencia Laboral: {formDetails.experienciaLaboral}</p> 
             </div>
           )}
         </div>
