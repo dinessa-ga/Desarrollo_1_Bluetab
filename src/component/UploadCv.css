@@ -1,0 +1,13 @@
+*{
+    width: 100%;
+}
+.pdf-text-container {
+    width: 100%; /* El 100% del ancho del contenedor */
+    max-height: 300px; /* Define la altura máxima que desees */
+    overflow-y: auto; /* Agrega barras de desplazamiento vertical si es necesario */
+    border: 1px solid #ccc; /* Agrega un borde para separar el texto */
+    padding: 10px; /* Añade un poco de espacio alrededor del texto */
+    background-color: #f8f8f8; /* Puedes personalizar el color de fondo según tus preferencias */
+    word-wrap: break-word; /* Permite que las palabras largas se rompan y se ajusten al contenedor */
+  }
+  
