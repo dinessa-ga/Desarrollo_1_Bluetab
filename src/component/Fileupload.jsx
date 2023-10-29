@@ -68,6 +68,7 @@ const FileUpload = ({ updateFormData }) => {
             });
           });
         }
+        
 
         extractPageText(page);
       });

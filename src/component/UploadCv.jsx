@@ -7,13 +7,28 @@ import './UploadCV.css'; // Asegúrate de que la ruta sea correcta
 export default function UploadCV() {
   const [pdfs, setPdfs] = useState([]);
   const [selectedPdf, setSelectedPdf] = useState(null);
+  const [formDetails, setFormDetails] = useState(null); // Para almacenar los detalles del formulario
+  const [formName, setFormName] = useState(''); // Para almacenar el nombre del formulario seleccionado
 
   const viewPdf = async (pdf) => {
     setSelectedPdf(pdf);
+    setFormName(pdf.name);
+
+    // Cargar los detalles del formulario cuando se seleccione un PDF
+    const formDocRef = doc(db, 'Forms', pdf.name); // Suponiendo que el nombre del PDF coincide con el campo 'nombre' del formulario
+    const formDocSnapshot = await getDoc(formDocRef);
+    
+    if (formDocSnapshot.exists()) {
+      setFormDetails(formDocSnapshot.data());
+    } else {
+      setFormDetails(null);
+    }
   };
 
   const clearSelectedPdf = () => {
     setSelectedPdf(null);
+    setFormDetails(null);
+    setFormName('');
   }
 
   useEffect(() => {
@@ -57,6 +72,13 @@ export default function UploadCV() {
           <div className="pdf-text-container">
             <pre>{selectedPdf.text}</pre>
           </div>
+          {formDetails && (
+            <div>
+              <h2>Detalles del Formulario:</h2>
+              <p>Nombre: {formName}</p> {/* Muestra el nombre del formulario seleccionado */}
+              <p>Experiencia Laboral: {formDetails.experienciaLaboral}</p> {/* Agrega más campos del formulario aquí si es necesario */}
+            </div>
+          )}
         </div>
       )}
     </div>
